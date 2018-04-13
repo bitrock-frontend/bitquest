@@ -1,17 +1,17 @@
-;(function (window) {
+;( (window) => {
 
-  function defaults (target, obj) {
-    for (var prop in obj) target[prop] = target[prop] || obj[prop]
+  const defaults = (target, obj) => {
+    for (let prop in obj) target[prop] = target[prop] || obj[prop]
   }
 
-  function getQuery (queryParams) {
-    var arr = Object.keys(queryParams).map(function (k) {
+  const getQuery = (queryParams) => {
+    const arr = Object.keys(queryParams).map( (k) => {
       return k + '=' + encodeURIComponent(queryParams[k])
     })
     return '?' + arr.join('&')
   }
 
-  function _fetch (method, url, opts, data, queryParams) {
+  const _fetch = (method, url, opts, data, queryParams) => {
     opts.method = method
     opts.headers = opts.headers || {}
     opts.responseAs = (opts.responseAs && ['json', 'text', 'response'].indexOf(opts.responseAs) >= 0) ? opts.responseAs : 'json'
@@ -19,20 +19,14 @@
     defaults(opts.headers, {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
-    })
+    });
 
-    if (queryParams) {
-      url += getQuery(queryParams)
-    }
+    queryParams ? url += getQuery(queryParams) : url;
 
-    if (data) {
-        opts.body = JSON.stringify(data);
-    } else {
-        delete opts.body;
-    }
+    data ? opts.body = JSON.stringify(data) : delete opts.body;
 
     return fetchival.fetch(url, opts)
-      .then(function (response) {
+      .then((response) => {
         if (response.status >= 200 && response.status < 300) {
           if(opts.responseAs=="response")
             return response
@@ -40,44 +34,32 @@
             return null;
           return response[opts.responseAs]();
         }
-        var err = new Error(response.statusText)
+        const err = new Error(response.statusText)
         err.response = response
         throw err
-      })
+      });
   }
 
-  function fetchival (url, opts) {
-    opts = opts || {}
+  const fetchival = (url, opts = {}) => {
 
-    var _ = function (u, o) {
+    const _ = (u, o = {}) => {
       // Extend parameters with previous ones
-      u = url + '/' + u
-      o = o || {}
+      const _u = `${url}/${u}`;
       defaults(o, opts)
-      return fetchival(u, o)
+      return fetchival(_u, o)
     }
 
-    _.get = function (queryParams) {
-      return _fetch('GET', url, opts, null, queryParams)
-    }
+    _.get = (queryParams) => _fetch('GET', url, opts, null, queryParams);
 
-    _.post = function (data) {
-      return _fetch('POST', url, opts, data)
-    }
+    _.post = (data) => _fetch('POST', url, opts, data);
 
-    _.put = function (data) {
-      return _fetch('PUT', url, opts, data)
-    }
+    _.put =  (data) => _fetch('PUT', url, opts, data);
 
-    _.patch = function (data) {
-      return _fetch('PATCH', url, opts, data)
-    }
+    _.patch = (data) => _fetch('PATCH', url, opts, data);
 
-    _.delete = function () {
-      return _fetch('DELETE', url, opts)
-    }
+    _.delete = () =>  _fetch('DELETE', url, opts);
 
-    return _
+    return _;
   }
 
   // Expose fetch so that other polyfills can be used

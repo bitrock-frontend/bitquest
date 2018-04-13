@@ -28,9 +28,9 @@
   },
   "homepage": "https://github.com/typicode/fetchival",
   "devDependencies": {
-    "chai": "^2.2.0",
-    "mocha": "^2.2.4",
-    "node-fetch": "^1.1.1",
-    "uglify-js": "^2.4.20"
+    "chai": "^4.1.2",
+    "mocha": "^5.1.0",
+    "node-fetch": "^2.1.2",
+    "uglify-js": "^3.3.21"
   }
 }
