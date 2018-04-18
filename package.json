@@ -2,14 +2,15 @@
   "name": "fetchival",
   "version": "0.3.3",
   "description": "Makes JSON requests with fetch easier",
-  "main": "index.js",
+  "main": "src/index.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
     "test": "mocha test/tests.js",
-    "uglify": "uglifyjs -m -r fetchival index.js > index.min.js",
-    "size": "uglifyjs  -m -r fetchival index.js | gzip -9f | wc -c"
+    "test:ava": "ava ava/index.js",
+    "uglify": "uglifyjs -m -r fetchival ./src/index.js > index.min.js",
+    "size": "uglifyjs  -m -r fetchival ./src/index.js | gzip -9f | wc -c"
   },
   "repository": {
     "type": "git",
@@ -28,9 +29,10 @@
   },
   "homepage": "https://github.com/typicode/fetchival",
   "devDependencies": {
-    "chai": "^4.1.2",
-    "mocha": "^5.1.0",
-    "node-fetch": "^2.1.2",
-    "uglify-js": "^3.3.21"
+    "ava": "0.25.0",
+    "chai": "4.1.2",
+    "mocha": "5.1.0",
+    "node-fetch": "2.1.2",
+    "uglify-js": "3.3.21"
   }
 }
