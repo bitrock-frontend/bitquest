@@ -66,6 +66,7 @@ const fetchival = (url, opts = {}) => {
 // Bind fetch to window to avoid TypeError: Illegal invocation
 fetchival.fetch = typeof fetch !== 'undefined' ? fetch.bind(window) : null
 
+
 // Support CommonJS, AMD & browser
 if (typeof exports === 'object')
   module.exports = fetchival

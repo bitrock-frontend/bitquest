@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test:mocha": "mocha test/tests.js",
-    "test": "ava ava/index.js --verbose"
+    "test": "ava test/index.js --verbose"
   },
   "repository": {
     "type": "git",
@@ -33,8 +33,6 @@
   "homepage": "https://github.com/bitrock-frontend/bitquest",
   "devDependencies": {
     "ava": "0.25.0",
-    "chai": "4.1.2",
-    "mocha": "5.1.0",
     "node-fetch": "2.1.2",
     "typescript": "2.8.1"
   }
