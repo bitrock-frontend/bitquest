@@ -1,38 +1,41 @@
 {
-  "name": "fetchival",
-  "version": "0.3.3",
-  "description": "Makes JSON requests with fetch easier",
-  "main": "src/index.js",
+  "name": "bitquest",
+  "version": "1.0.0",
+  "description": "Makes JSON requests with fetch easier, the Bitrock way!",
+  "main": "index.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "mocha test/tests.js",
-    "test:ava": "ava ava/index.js",
-    "uglify": "uglifyjs -m -r fetchival ./src/index.js > index.min.js",
-    "size": "uglifyjs  -m -r fetchival ./src/index.js | gzip -9f | wc -c"
+    "test:mocha": "mocha test/tests.js",
+    "test": "ava ava/index.js --verbose"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/typicode/fetchival.git"
+    "url": "https://github.com/bitrock-frontend/bitquest.git"
   },
   "keywords": [
     "fetch",
     "API",
+    "wrapper",
     "JSON",
-    "REST"
+    "REST",
+    "bitrock"
   ],
   "author": "Typicode <typicode@gmail.com>",
+  "contributors": [
+    "Salvatore Laisa <salvatore.laisa@bitrock.it>"
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/typicode/fetchival/issues"
+    "url": "https://github.com/bitrock-frontend/bitquest/issues"
   },
-  "homepage": "https://github.com/typicode/fetchival",
+  "homepage": "https://github.com/bitrock-frontend/bitquest",
   "devDependencies": {
     "ava": "0.25.0",
     "chai": "4.1.2",
     "mocha": "5.1.0",
     "node-fetch": "2.1.2",
-    "uglify-js": "3.3.21"
+    "typescript": "2.8.1"
   }
 }
