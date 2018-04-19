@@ -2,13 +2,13 @@
   "name": "bitquest",
   "version": "1.0.0",
   "description": "Makes JSON requests with fetch easier, the Bitrock way!",
-  "main": "index.js",
+  "main": "src/index.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test:mocha": "mocha test/tests.js",
-    "test": "ava test/index.js --verbose"
+    "test": "xo && ava test/index.js --verbose",
+    "compile": "tsc ./src/libs.ts"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,19 @@
     "Salvatore Laisa <salvatore.laisa@bitrock.it>"
   ],
   "license": "MIT",
+  "xo": {
+    "env": [
+      "browser",
+      "node"
+    ],
+    "space": true,
+    "rules": {
+      "ava/prefer-async-await": 0,
+      "no-unused-expressions": 0,
+      "max-params": 0,
+      "no-use-before-define": 0
+    }
+  },
   "bugs": {
     "url": "https://github.com/bitrock-frontend/bitquest/issues"
   },
@@ -34,6 +47,7 @@
   "devDependencies": {
     "ava": "0.25.0",
     "node-fetch": "2.1.2",
-    "typescript": "2.8.1"
+    "typescript": "2.8.1",
+    "xo": "0.20.3"
   }
 }
