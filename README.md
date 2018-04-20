@@ -52,18 +52,20 @@ Bitquest is available on NPM.
 __Browser__
 ```bash
 npm install es6-promise whatwg-fetch # polyfills
-npm install fetchival
+npm install bitquest
 ```
 
 __Node__
 
 ```bash
-npm install node-fetch fetchival --save
+npm install node-fetch bitquest --save
 ```
 
 ## Usage examples
 
 ```javascript
+import bitquest from 'bitquest';
+
 const posts = bitquest('/posts')
 
 //posts
